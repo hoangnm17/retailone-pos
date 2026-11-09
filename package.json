@@ -1,0 +1,14 @@
+{
+  "name": "retailone-pos", "version": "1.0.0", "private": true,
+  "workspaces": ["backend", "frontend"],
+  "scripts": {
+    "start": "npm run start --workspace backend",
+    "dev": "node scripts/dev.js",
+    "dev:api": "npm run dev --workspace backend",
+    "dev:web": "npm run dev --workspace frontend",
+    "preview:web": "npm run preview --workspace frontend",
+    "build": "npm run build --workspace frontend",
+    "seed:mssql": "npm run seed:mssql --workspace backend"
+  },
+  "engines": {"node": ">=22.11"}
+}

@@ -1,0 +1,28 @@
+/* Additions to the original SalePage.css for the scoped POS application. */
+body { margin: 0; background: #f8f9fa; }
+.pos-shell { height: 100dvh; }
+.pos-tab-header { height: 55px; min-height: 55px; }
+.pos-tab-header > div:first-child { min-width: 0; }
+.chrome-tab { flex-shrink: 0; white-space: nowrap; }
+.tab-label, .tab-close { background: transparent; color: inherit; border: 0; padding: 0; }
+.tab-label { font-size: .85rem; font-weight: 700; }
+.tab-label .bi { margin-right: .35rem; }
+.tab-close:disabled, .tab-label:disabled { opacity: .5; }
+.pos-demo-bar { background: #eef4ff; color: #527298; font-size: 11px; padding: 7px 16px; }
+.pos-workspace { min-height: 0; }
+.pos-order-column { flex: 0 0 45%; min-width: 0; z-index: 5; }
+.pos-product-column { flex: 0 0 55%; min-width: 0; }
+.order-table-scroll { min-height: 110px; }
+.order-table-scroll table { min-width: 570px; font-size: 12px; }
+.order-quantity { width: 53px; min-width: 40px; appearance: textfield; }
+.order-quantity::-webkit-inner-spin-button { appearance: none; }
+.product-card-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 22px; }
+.product-card-grid > div { min-width: 0; }
+.product-placeholder { display: grid; place-items: center; height: 100%; background: #e8effb; font-size: 65px; padding-bottom: 24px; }
+.product-detail-trigger { font-size: 11px; }
+.pos-modal-body { max-height: calc(100dvh - 40px); overflow-y: auto; }
+.invoice-summary { width: 350px; max-width: 100%; font-size: 13px; }
+.bill-paper { overflow-wrap: anywhere; }
+@media (max-width: 1000px) { .pos-order-column { flex-basis: 50%; } .pos-product-column { flex-basis: 50%; } .filter-bar-container .btn { font-size: 10px; } }
+@media (max-width: 760px) { .pos-shell { height: auto; min-height: 100dvh; } .pos-workspace { flex-direction: column-reverse; overflow: visible !important; } .pos-product-column { flex-basis: auto; height: 52dvh; min-height: 370px; } .pos-order-column { flex-basis: auto; height: 700px; } .pos-demo-bar { font-size: 10px; } .product-card-grid { gap: 14px; grid-template-columns: repeat(auto-fill, minmax(130px, 1fr)); } }
+@media print { .pos-modal-overlay { position: absolute !important; display: block !important; padding: 0 !important; background: white !important; backdrop-filter: none !important; } .pos-modal-body { max-height: none !important; overflow: visible !important; } }

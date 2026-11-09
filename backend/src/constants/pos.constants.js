@@ -1,0 +1,10 @@
+module.exports = {
+  DATA_SOURCES: ['mock', 'mssql'],
+  DEFAULT_API_PORT: 5100,
+  DEFAULT_FRONTEND_ORIGINS: ['http://127.0.0.1:5173', 'http://localhost:5173'],
+  INVOICE_STATUSES: ['UNPAID', 'PAID', 'CANCELLED', 'REFUNDED', 'PARTIALLY_REFUNDED'],
+  PAYMENT_STATUSES: ['PENDING', 'SUCCESS', 'FAILED'],
+  PAYMENT_METHODS: ['CASH', 'BANK_TRANSFER'],
+  CORS_METHODS: ['GET', 'HEAD', 'POST', 'PATCH', 'OPTIONS'],
+  CORS_HEADERS: ['content-type', 'x-webhook-secret']
+};

@@ -1,0 +1,80 @@
+import React from "react";
+import { formatCurrency } from "utils/formatters";
+import BaseModal from 'components/common/BaseModal';
+
+const ProductUnitModal = ({ product, show, onHide, onSelectUnit, disabled }) => {
+    if (!product || !show) return null;
+
+    return (
+        <BaseModal onClose={onHide} maxWidth="520px" label="Chi tiết sản phẩm và đơn vị tính">
+            <div>
+                <div className="modal-content border-0 shadow-lg rounded-4">
+
+                    <div className="modal-header border-0 pb-0">
+                        <h5 className="modal-title fw-bold">Chi tiết / Chọn đơn vị tính</h5>
+                        <button type="button" className="btn-close" aria-label="Đóng chi tiết sản phẩm" onClick={onHide}></button>
+                    </div>
+
+                    <div className="modal-body">
+                        <div className="d-flex align-items-center mb-3 p-2 bg-light rounded-3">
+                            {product.imageUrl ? <img
+                                src={product.imageUrl}
+                                alt={product.name}
+                                className="rounded-2"
+                                style={{ width: 50, height: 50, objectFit: 'cover' }}
+                            /> : <div className="fs-1">{product.emoji || '📦'}</div>}
+                            <div className="ms-3">
+                                <div className="fw-bold">{product.name}</div>
+                                <small className="text-muted">Mã: {product.code}</small>
+                            </div>
+                        </div>
+
+                        <div className="list-group">
+                            {product.units.map((unit) => (
+                                <button
+                                    key={unit.unitId}
+                                    className="list-group-item list-group-item-action d-flex justify-content-between align-items-center p-3 mb-2 rounded-3 border"
+                                    onClick={() => onSelectUnit(product, unit)}
+                                    disabled={disabled || unit.stock <= 0}
+                                    aria-label={`Chọn ${unit.unitName} - ${product.name}`}
+                                >
+                                    <div>
+                                        <span className="fw-bold d-block">{unit.unitName}</span>
+                                        <small className={unit.stock <= 0 ? "text-danger" : "text-muted"}>
+                                            Tồn kho: {unit.stock}
+                                        </small>
+                                        <small className="text-muted d-block">Mã vạch: {unit.barcode || 'Chưa có'}</small>
+                                        <small className="text-muted d-block">{unit.unitType === 'WEIGHT' ? 'Cân ký · số lượng đến 3 chữ số thập phân' : 'Số lượng nguyên'}</small>
+                                    </div>
+                                    <div className="text-end">
+                                        {unit.discountedPrice < unit.price ? (
+                                            <>
+                                                <span className="fw-bold text-primary d-block">
+                                                    {formatCurrency(unit.discountedPrice)}
+                                                </span>
+                                                <small className="text-muted text-decoration-line-through">
+                                                    {formatCurrency(unit.price)}
+                                                </small>
+                                            </>
+                                        ) : (
+                                            <span className="fw-bold text-primary d-block">
+                                                {formatCurrency(unit.price)}
+                                            </span>
+                                        )}
+                                        {unit.factor > 1 && (
+                                            <small className="badge bg-secondary-subtle text-secondary">
+                                                x{unit.factor} đơn vị lẻ
+                                            </small>
+                                        )}
+                                    </div>
+                                </button>
+                            ))}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </BaseModal>
+    );
+};
+
+export default ProductUnitModal;

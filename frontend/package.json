@@ -1,0 +1,6 @@
+{
+  "name": "@retailone/frontend", "version": "1.0.0", "private": true, "type": "module",
+  "scripts": {"dev": "vite --host 127.0.0.1", "build": "vite build", "preview": "vite preview --host 127.0.0.1"},
+  "dependencies": {"bootstrap": "^5.3.8", "bootstrap-icons": "^1.13.1", "react": "^19.0.0", "react-dom": "^19.0.0", "react-router-dom": "^7.13.0"},
+  "devDependencies": {"vite": "^6.1.0"}
+}
