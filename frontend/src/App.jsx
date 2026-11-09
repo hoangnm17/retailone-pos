@@ -1,3 +1,5 @@
+//  Copyright by HoangNm - HE194566 9-11-2026
+
 import {BrowserRouter} from 'react-router-dom';
 import {NotificationProvider} from 'components/global/Notification/NotificationContext';
 import {PosProvider, usePos} from 'hooks/pos/usePos';

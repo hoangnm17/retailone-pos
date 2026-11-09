@@ -1,3 +1,5 @@
+/* Copyright by HoangNm - HE194566 * 9-11-2026*/
+
 const express = require('express');
 const http = require('node:http');
 const {getConfig} = require('./config/env');
